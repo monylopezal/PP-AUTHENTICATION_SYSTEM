@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center login-page">
+        <div class="col-md-12 login-form">
+            <form  method="post"> 
+                <div class="row">
+                    <div class="col-md-12 login-from-row">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12 login-form-header">
+                                <p class="login-form-font-header">PP<span>-Authentication</span><p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Username: </b></label><br>
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Password: </b></label><br>
+                                {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <button class="btn btn-info" type="submit" id="submit">Login</button>
+                            </div>
+                        </div>
+                        <div id="formFooter">
+                            <p>
+                                <a class="underlineHover" href="{% url 'register' %}">Register Here</a><br><a class="underlineHover" href="{% url 'password_reset' %}">Forgot your password?</a>
+                            </p>    
+                        </div>
+                        
+                    </div>
+                </div>			
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#">PP-AUTHENTICATION SYSTEM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>Events of the User</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+              <form id="buscador" class="form" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ user }}">
+                <input type="date" name="timestamp">
+            </form>
+            <button type="button" onclick="listevents()">Buscar</button>
+          </div>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Accion</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="content-table">
+            {% for login in eventlogin %}
+            <tr>
+                <th>Login</th>
+                <td>{{ login.timestamp }}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+  {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center login-page">
+        <div class="col-md-12 login-form">
+            <form  method="post"> 
+                <div class="row">
+                    <div class="col-md-12 login-from-row">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12 login-form-header">
+                                <p class="login-form-font-header">Register Account</span><p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Username: </b></label><br>
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Email: </b></label><br>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Password: </b></label><br>
+                                {{ form.password1 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <label><b>Confirm Password: </b></label><br>
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 login-from-row">
+                                <p><a class="btn btn-danger" href="{% url 'login' %}">Cancel</a>  <button class="btn btn-info" type="submit" id="submit">Register</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
